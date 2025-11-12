@@ -42,3 +42,10 @@ The <a href="https://www.census.gov/data/developers/data-sets.html">U.S. Census 
 - July_Estimate_2024
 - Region
 
+## EDA Highlights
+
+## Resources
+
+## Code Links
+
+## Disclaimers
