@@ -18,6 +18,10 @@ The data file includes four different .csv files:
 - dataset_code.ipynb : This file is the code for aquiring the data from the API and code to clean the data sets, merge, and add additional columns for analysis purposes.
 - EDA.ipynb : This is the exploratory data analysis for the data that uses the college_state_pop.csv.
 
+## Plots File
+
+The plots file includes any plots made during the exploratory analysis that I wanted to save as a .png file.
+
 
 
 ### Data Sources: 
