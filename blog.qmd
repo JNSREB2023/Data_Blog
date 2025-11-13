@@ -1,6 +1,8 @@
 ---
 title: "Data Aquisition Blog Post"
 author: "Bekah Jensen"
+toc: true
+toc-depth: 2
 format: html
 execute:
     echo: false
@@ -21,27 +23,32 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 ### An analysis of 1,000 U.S. colleges graduation rates.
 
+
 ## Introduction
 
-The purpose of this blog is to show an in depth analysis of the affects on graduations rates in U.S. colleges. The analysis studies 1,000 colleges with information on student size, tuition prices, diversity, region, and graduation rates. Studying this information could be useful in determining what factors help students graduate. Those inquiring about a future college career could use the information in deciding where to attend school.
+The purpose of this blog is to show an in depth analysis of the affects on graduations rates of U.S. colleges. The analysis studies 1,000 colleges with information on student size, tuition prices, diversity, region, and graduation rates. Studying this information could be useful in determining what factors help students graduate. Those inquiring about a future college career could use the information when deciding where to attend school.
 
-Education is crucial for societal purposes. Education allows people to become evolved thinkers and be active participants in society, and the economy. Learning what factors help students graduate could help increase overall graduation rates. While this analysis does give some insight on what influences graduation rates, this information should not be used and cited as this is not an offical analysis.
+Education is crucial for societal purposes. Education allows people to become evolved thinkers, be active participants in society, and the economy. Learning what factors help students graduate could help increase overall graduation rates. While this analysis does give some insight on what influences graduation rates, this information should not be used and cited as this is not an official analysis.
 
 ## Motivation
 
 From this analysis it is my hope that I learn more about the data cleaning process and analysis. I am hoping to gain a better understanding of demographics from different colleges across the nation.
 
+With these goals I also hope to provide insight on the dataset created. 
+
 ## Ethical Data Practices
 
-Data gathered from the U.S. Census Bureau and College Scorecard is allowed because it is public data. Anyone can acess the data as long as they are not used to identify any individual person, household, business or other entity. The Bureau also requests that the following disclaimer be made: "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." 
+The data is acquired from the U.S. Census Bureau and the College Scorecard by the U.S. Department of Education.
 
-Using these guidelines I wwas able to determine that use of this data for the purpose of my research question was ethical. I aquired API keys specifically assigned to myself and these keys were not published and cannot be accessed via the cleaning process and exploratory data analysis. 
+Data gathered from the U.S. Census Bureau and College Scorecard is allowed because it is public data. Anyone can access the data as long as it is not used to identify any individual person, household, business or other entity. The Bureau also requests that the following disclaimer be made: "This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau." 
+
+Using these guidelines I was able to determine that use of this data for the purpose of my research question was ethical. I acquired API keys specifically assigned to myself and these keys were not published and cannot be accessed via the cleaning process and exploratory data analysis. 
 
 ## A Short Note on Acquiring the Data
 
-This analysis uses one datasets that has been cleaned and merged from two datasets, one with information about colleges, the other about state population. 
+This analysis uses one datasets that has been cleaned and merged from two datasets, one with information about colleges, the other about state populations. 
 
-The <a href="https://www.census.gov/data/developers/data-sets.html">U.S. Census Bureau</a> and <a href="https://collegescorecard.ed.gov/data/api-documentation">College Scorecard</a> have in depth information about downloading data, acquiring and use of APIs and keys. To get started follow the instructions on those sites. Once you have the two different datasets, clean them and merge to get one dataframe that includes the following columns:
+The <a href="https://www.census.gov/data/developers/data-sets.html">U.S. Census Bureau</a> and <a href="https://collegescorecard.ed.gov/data/api-documentation">College Scorecard</a> have in depth information about downloading data, acquiring, and use of APIs and keys. To get started follow the instructions on those sites. Once you have the two different datasets, clean them and merge to get one dataframe that includes the following columns:
 
 - Student_Size
 - Tuition_In_State
@@ -63,7 +70,7 @@ The <a href="https://www.census.gov/data/developers/data-sets.html">U.S. Census 
 
 ## EDA Highlights
 
-### Summary Statisitcs
+### Summary Statistics
 
 ```{python}
 data = pd.read_csv('data/college_state_pop.csv')
@@ -72,14 +79,14 @@ data.head()
 
 ```
 
-The table above shows the first few row of the data, this gives us an idea of what variable we are woking with. For the purpose of this analysis we will be looking at what variables affect graduation rates. 
+The table above shows the first few row of the data, this gives us an idea of what variable we are working with. For the purpose of this analysis we will be looking at what variables affect graduation rates. 
 ```{python}
 data.describe()
 ```
 
 The table above shows summary statistics for each variable in the dataframe. 
 
-The following table is the count of N/A values after taking the average graduation rate, in state tuition, and out of stat tuition for each state and filling the na values with those mean values. Note there are still some unknown values for the categorical values.
+The following table is the count of N/A values after taking the averages of graduation rate, in state tuition, and out of stat tuition for each state and filling the na values with those mean values. Note there are still some unknown values for the categorical values.
 
 | Variable             | Count |
 |----------------------|--------|
@@ -102,7 +109,7 @@ The following table is the count of N/A values after taking the average graduati
 | July_Estimate_2024   | 12     |
 | Region               | 374    |
 
-The following table is the count of occurances for each state. Note that there is not data on all of the states in the U.S. this is due to the amount of data pulled from the API, only 1,000 schools were accounted for in the data, therefore the data will be skewed. 
+The following table is the count of occurrences for each state. Note that there is not data on all of the states in the U.S. this is due to the amount of data pulled from the API, only 1,000 schools were accounted for in the data, therefore the data will be skewed. 
 
 
 | State | Count |
@@ -158,7 +165,7 @@ Next we can compute the mean graduation rate for each state in the dataset.
 | NM     | 0.537000 |
 | NY     | 0.125000 |
 
-It is interesting to note that the District of Columbia, which is a territory has the highest graduation rate, which Connecticut following as a close second. Again we really can't pull reliable inferences from this since the sample sizes are skewed, especially since New York, which has some of the most prestegious universities in the country, has the lowest graduation rate and only one singular occurrance in the dataset. 
+It is interesting to note that the District of Columbia, which is a territory has the highest graduation rate, with Connecticut following as a close second. Again we really can't pull reliable inferences from this since the sample sizes are skewed, especially since New York, which has some of the most prestigious universities in the country, has the lowest graduation rate and only one singular occurrence in the dataset. 
 
 
 We can run a regression model on the following variables and see if any are statistically significant. 
@@ -178,6 +185,8 @@ We can run a regression model on the following variables and see if any are stat
 
 We cannot pull inference from this model, however it is interesting to see if there is an interaction between certain variables.
 
+### Plots
+
 ```{python}
 sns.scatterplot(data=data, x="Tuition_In_State", y="Grad_Rate", hue="Region")
 plt.xlabel('Tuition In State')
@@ -187,7 +196,7 @@ plt.grid(True)
 plt.show()
 ```
 
-The plot above shows in state tuition prices plotted against graduation rates, with the colors coressponding to north and south regions of the U.S. It is interesting to note that there appears to be a linear relationship between higher tuition prices and graduation rate.
+The plot above shows in state tuition prices plotted against graduation rates, with the colors corresponding to north and south regions of the U.S. It is interesting to note that there appears to be a linear relationship between higher tuition prices and graduation rate.
 
 ```{python}
 sns.scatterplot(data=data, x="Tuition_Out_State", y="Grad_Rate", hue="Region")
@@ -242,7 +251,7 @@ sns.despine(trim=True, left=True)
 
 ```
 
-These highlights of the data help us understand that while more information and data is needed we can see that higher tuition prices could result in larger graduation rates in U.S. colleges.
+These highlights of the data help us understand that while more information and data is needed to pull reliable inferences, we can see that higher tuition prices could result in higher graduation rate in U.S. colleges.
 
 ## Resources
 
@@ -253,6 +262,8 @@ These highlights of the data help us understand that while more information and 
 - <a href="https://www.bestcolleges.com/research/college-graduation-rates/">More information about graduation rates.</a>
 
 ## Code Links
+
+Fork the repository below to view the code used to create and merge the datasets, as well as the EDA process.
 
 - <a href="https://github.com/JNSREB2023/Data_Blog">Code for data analysis</a>
 
