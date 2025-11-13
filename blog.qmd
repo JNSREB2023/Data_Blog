@@ -242,9 +242,22 @@ sns.despine(trim=True, left=True)
 
 ```
 
+These highlights of the data help us understand that while more information and data is needed we can see that higher tuition prices could result in larger graduation rates in U.S. colleges.
 
 ## Resources
 
+- <a href="https://www.census.gov/data/developers/data-sets.html">U.S. Census Bureau</a>
+
+- <a href="https://collegescorecard.ed.gov/data/api-documentation">College Scorecard</a>
+
+- <a href="https://www.bestcolleges.com/research/college-graduation-rates/">More information about graduation rates.</a>
+
 ## Code Links
 
+- <a href="https://github.com/JNSREB2023/Data_Blog">Code for data analysis</a>
+
+
 ## Disclaimers
+
+This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
+
